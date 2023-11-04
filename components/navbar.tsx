@@ -6,65 +6,37 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import MobileNav from "@/components/MobileNav";
 import Image from "next/image";
 
+import Navlinks from "@/components/Navlinks"
+import { ModeToggle } from "@/components/mode-toggle"
+
 const Navbar = () => {
     const [nav, setNav] = useState(false);
 
-    const links = [
-        {
-            id: 1,
-            link: "Inicio",
-        },
-        {
-            id: 2,
-            link: "SOBRE",
-        },
-        {
-            id: 3,
-            link: "portfolio",
-        },
-        {
-            id: 4,
-            link: "experience",
-        },
-        {
-            id: 5,
-            link: "contact",
-        },
-    ];
-
     return (
-        <nav className="bg-gray-800">
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                <div className="relative flex h-16 items-center justify-between">
-                    <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        <MobileNav />
-                    </div>
-                    <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                        <div className="flex flex-shrink-0 items-center">
-                            <Image
-                                src="/logo.png"
-                                alt="Vercel Logo"
-                                className="dark:invert"
-                                width={40}
-                                height={40}
-                                priority
-                            />
-                        </div>
-                        <div className="hidden sm:ml-6 sm:block">
-                            <div className="flex space-x-4">
-                                <a href="#" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
-                                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
-                            </div>
-                        </div>
-                    </div>
-
+        <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="https://flowbite.com/" className="flex items-center">
+                <Image
+                      src="/logo.png"
+                      alt="Vercel Logo"
+                      className="dark:invert"
+                      width={40}
+                      height={40}
+                      priority
+                  />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">@Garriagus</span>
+                </a>
+                <div className="flex md:order-2">                  
                 </div>
+                <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul
+                        className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                       <Navlinks />
+                        <ModeToggle />
+                    </ul>
+                </div>                
+              <MobileNav />
             </div>
-
-
-
         </nav>
     );
 };
