@@ -1,83 +1,148 @@
 ---
-title: Preview Mode for Headless CMS
-description: How to implement preview mode in your headless CMS.
-date: 2023/03/04
+title: "DHT 22 con ESP8266 & ESPHome"
+description: "Tutorial Completo: Como conectar un sensor DHT22 a un ESP8266 con ESPHome paso a pas"
+date: 04/11/2023
+image: esp8266.jpeg
 ---
 
-Until now, trying to style an article, document, or blog post with Tailwind has been a tedious task that required a keen eye for typography and a lot of complex custom CSS.
+import {CopyButton} from "@/components/copy-button"
 
-By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you _really are_ just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+El objetivo de este tutorial es aprender a conectar un sensor a un microcontrolador y poder visualizar sus datos de manera remota.
+En este caso veremos un sensor DHT22 con un microcontrolador ESP826, el cual programaremos con ESPHome.
 
-We get lots of complaints about it actually, with people regularly asking us things like:
 
-> Why is Tailwind removing the default styles on my `h1` elements? How do I disable this? What do you mean I lose all the other base styles too?
-> We hear you, but we're not convinced that simply disabling our base styles is what you really want. You don't want to have to remove annoying margins every time you use a `p` element in a piece of your dashboard UI. And I doubt you really want your blog posts to use the user-agent styles either — you want them to look _awesome_, not awful.
-
-The `@tailwindcss/typography` plugin is our attempt to give you what you _actually_ want, without any of the downsides of doing something stupid like disabling our base styles.
-
-It adds a new `prose` class that you can slap on any block of vanilla HTML content and turn it into a beautiful, well-formatted document:
-
-```html
-<article class="prose">
-  <h1>Garlic bread with cheese: What the science tells us</h1>
-  <p>
-    For years parents have espoused the health benefits of eating garlic bread
-    with cheese to their children, with the food earning such an iconic status
-    in our culture that kids will often dress up as warm, cheesy loaf for
-    Halloween.
-  </p>
-  <p>
-    But a recent study shows that the celebrated appetizer may be linked to a
-    series of rabies cases springing up around the country.
-  </p>
-</article>
-```
+<div class="table-of-contents p-4 border border-gray-300 rounded-lg">
+  <h2 class="text-xl font-bold mb-4">Tabla de Contenidos</h2>
+  <ul class="list-inside list-decimal">
+    <li>
+      <a href="#Componentes" class="text-blue-600 hover:underline">
+        Componentes
+      </a>
+    </li>
+    <li>
+      <a href="#dht-22" class="text-blue-600 hover:underline">
+        DHT-22
+      </a>
+    </li>
+    <li>
+      <a href="#esp-8266" class="text-blue-600 hover:underline">
+        ESP-8266
+      </a>
+    </li>
+    <li>
+      <a href="#esp-home" class="text-blue-600 hover:underline">
+        ESPHome
+      </a>
+    </li>
+    <li>
+      <a href="#Armado-del-circuito" class="text-blue-600 hover:underline">
+        Armado del circuito{" "}
+      </a>
+    </li>
+    <li>
+      <a href="#cargando-el-codigo" class="text-blue-600 hover:underline">
+        Cargando el Código
+      </a>
+    </li>
+    <li>
+      <a href="#seccion-3" class="text-blue-600 hover:underline">
+        2. 2. [Creando el proyecto (adjuntar yaml)](#id2){" "}
+      </a>
+    </li>
+    <li>
+      <a href="#seccion-3" class="text-blue-600 hover:underline">
+        2. 3. [Instalar yaml](#id2)
+      </a>
+    </li>
+    <li>
+      <a href="#seccion-3" class="text-blue-600 hover:underline">
+        2. 4. [Segundo apartado](#id2){" "}
+      </a>
+    </li>
+  </ul>
+</div>
 
 For more information about how to use the plugin and the features it includes, [read the documentation](https://github.com/tailwindcss/typography/blob/master/README.md).
 
----
+## <a name="Componentes"></a>
 
-## What to expect from here on out
+# Componentes
 
-What follows from here is just a bunch of absolute nonsense I've written to dogfood the plugin itself. It includes every sensible typographic element I could think of, like **bold text**, unordered lists, ordered lists, code blocks, block quotes, _and even italics_.
+Antes de comenzar a armar el circuito, veremos una breve descripción de cada uno de los componentes:
 
-It's important to cover all of these use cases for a few reasons:
+<a name="dht-22"></a>
+## DHT 22 <a name="dht-22"></a>
+<img src="/DHT22_pines.jpeg" alt="" width="600" height="600"></img>
 
-1.  We want everything to look good out of the box.
-2.  Really just the first reason, that's the whole point of the plugin.
-3.  Here's a third pretend reason though a list with three items looks more realistic than a list with two items.
 
-Now we're going to try out another header style.
+El DHT22 es un sensor de alta precisión que permite medir tanto la temperatura como la humedad relativa del ambiente.
 
-### Typography should be easy
+## ESP8266 <a name="esp-8266"></a>
 
-So that's a header for you — with any luck if we've done our job correctly that will look pretty reasonable.
+{" "}
+<img src="/esp8266_board.jpeg" alt="" width="600" height="600"></img>
 
-Something a wise person once told me about typography is:
+Por otro lado, el ESP8266 es un microcontrolador con una antena de WiFi que es ampliamente utilizado en proyectos IoT debido a su capacidad de conectarse a la red y recopilar datos.
 
-> Typography is pretty important if you don't want your stuff to look like trash. Make it good then it won't be bad.
+## ESPHome <a name="esp-home"></a>
 
-It's probably important that images look okay here by default as well:
+{" "}
+<img src="/esphome.svg" alt="" width="600" height="600"></img>
 
-<Image src="/blog-post-4.jpg" width="718" height="404" alt="Image" />
+ESPHome es un framework de código abierto que simplifica la integración de dispositivos IoT en el ecosistema Home Assistant. A medida que avancemos, veremos cómo estos dos componentes pueden trabajar en conjunto para crear un sistema de monitoreo en tu hogar o proyecto.
 
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+## <a name="Armado del circuito"></a>
 
-Now I'm going to show you an example of an unordered list to make sure that looks good, too:
+# Armado
 
-- So here is the first item in this list.
-- In this example we're keeping the items short.
-- Later, we'll use longer, more complex list items.
+{" "}
+<img src="/esp8266-dht.jpeg" alt="" width="600" height="600"></img>
 
-And that's the end of this section.
+## <a name="cargando-el-codigo"></a>
 
-## What if we stack headings?
+# Cargando el Código
 
-### We should make sure that looks good, too.
+```html
+esphome:
+  name: tu_nombre # Nombre de tu unidd
+  friendly_name: unidad_uno
 
-Sometimes you have headings directly underneath each other. In those cases you often have to undo the top margin on the second heading because it usually looks better for the headings to be closer together than a paragraph followed by a heading should be.
+esp8266:
+  board: esp01_1m
 
-### When a heading comes after a paragraph …
+# Enable logging
+logger:
+
+ota:
+  password: "33f8fa566a72e73f7c6d8dfa086e6e74"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  manual_ip:
+    static_ip: 192.168.0.123
+    gateway: 192.168.0.1
+    subnet: 255.255.255.0
+
+mqtt:
+  broker: 192.168.0.4  # Reemplaza con la dirección IP de tu servidor MQTT
+  username: mqtt_username  # Opcional: si tu servidor MQTT requiere autenticación
+  password: mqtt_password  # Opcional: si tu servidor MQTT requiere autenticación
+
+captive_portal:
+    
+
+sensor:
+  - platform: dht
+    pin: GPIO5 # Pin D1
+    temperature:
+      name: "Temperatura"
+    humidity:
+      name: "Humedad"
+    model: DHT22
+    update_interval: 10s
+
+```
 
 When a heading comes after a paragraph, we need a bit more space, like I already mentioned above. Now let's see what a more complex list would look like.
 
@@ -111,7 +176,7 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-}
+};
 ```
 
 Hopefully that looks good enough to you.
