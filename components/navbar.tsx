@@ -1,22 +1,19 @@
-"use client"
-
 import Link from "next/link";
-import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import MobileNav from "@/components/MobileNav";
 import Image from "next/image";
-
-import Navlinks from "@/components/Navlinks"
-import { ModeToggle } from "@/components/mode-toggle"
+import MobileNav from "@/components/MobileNav";
+import siteMetadata from "@/data/siteMetadata";
+import navLinks from "@/data/navLinks";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const Navbar = () => {
-    const [nav, setNav] = useState(false);
-
-    return (
-        <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="https://flowbite.com/" className="flex items-center">
-                <Image
+  return (
+    <header>
+      <nav className="flex items-center justify-between p-8">
+        <div>
+          <Link href="/" aria-label={siteMetadata.headerTitle}>
+            <div className="flex items-center justify-between">
+              <div className="mr-3">
+              <Image
                       src="/logo.png"
                       alt="Vercel Logo"
                       className="dark:invert"
@@ -24,21 +21,35 @@ const Navbar = () => {
                       height={40}
                       priority
                   />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">@Garriagus</span>
-                </a>
-                <div className="flex md:order-2">                  
+              </div>
+              {typeof siteMetadata.headerTitle === "string" ? (
+                <div className="hidden h-6 text-2xl font-semibold sm:block">
+                  {siteMetadata.headerTitle}
                 </div>
-                <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                    <ul
-                        className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                       <Navlinks />
-                        <ModeToggle />
-                    </ul>
-                </div>                
-              <MobileNav />
+              ) : (
+                siteMetadata.headerTitle
+              )}
             </div>
-        </nav>
-    );
+          </Link>
+        </div>
+        <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
+          {navLinks
+            .filter((link) => link.href !== "/")
+            .map((link) => (
+              <Link
+                key={link.title}
+                href={link.href}
+                className="hidden font-medium text-gray-900 dark:text-gray-100 sm:block"
+              >
+                {link.title}
+              </Link>
+            ))}
+          <ModeToggle />
+          <MobileNav />
+        </div>
+      </nav>
+    </header>
+  );
 };
 
 export default Navbar;
