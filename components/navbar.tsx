@@ -6,7 +6,7 @@ import navLinks from "@/data/navLinks";
 import { ModeToggle } from "@/components/mode-toggle";
 
 
-export default function Footer() {
+export default function Navbar() {
   return (
     <header>
       <nav className="flex items-center justify-between p-8">
