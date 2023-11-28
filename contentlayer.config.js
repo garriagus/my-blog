@@ -47,6 +47,12 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       //required: true,
     },
+    author: {
+      type: "string",
+    },
+    author_image: {
+      type: "string",
+    },
   },
   computedFields,
 }))

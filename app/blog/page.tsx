@@ -34,13 +34,13 @@ const ButtonImageChanger = () => {
           <div className="md:w-1/2 px-3 mb-6 w-full">
             <div
               className={`flex w-full h-full flex-col flex-wrap bg-cover bg-no-repeat bg-center p-5 rounded overflow-hidden transition-all duration-300 ${
-                isHovered ? "blur-md" : ""
+                isHovered ? "blur-md" : "blur-md"
               }`}
               style={{
                 backgroundImage: `url(${post.image})`, // Asigna la URL de la imagen de fondo
               }}
             >
-              <Link href={post.slug}>
+              <Link href= {"post/"+post.title}>
                 <h2 className="tdark:prose-invert ">{post.title}</h2>
               </Link>
               <p className="leading-relaxed text-base">

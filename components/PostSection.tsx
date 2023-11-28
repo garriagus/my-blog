@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import React, { useState } from "react";
 import Card from "@/components/Card";
-import Image from "next/image";
 
 import { allPosts } from "@/.contentlayer/generated";
 
@@ -24,15 +22,22 @@ const PostSection = () => {
   };
 
   return (
-    <div className="bg-gray-900 pt-12 pb-6 flex-1">
+    <div className="pt-12 pb-6 flex-1 ">
       <div className="container mx-auto">
         <div className="flex flex-wrap md:-mx-3">
           {allPosts.map((post) => (
             <Card
-              posts={{ id: post._id, name: post.title, image: post.image }}
-            >
-              
-            </Card>
+              key={post._id}
+              posts={{
+                id: post._id,
+                title: post.title,
+                image: post.image,
+                description: post.description,
+                date: post.date,
+                author: post.author,
+                author_image: post.author_image
+              }}
+            ></Card>
           ))}
         </div>
       </div>
