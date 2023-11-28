@@ -1,7 +1,7 @@
 import Image from "next/image";
-import PostSection from "@/components/PostSection";
+import Card from "@/components/Card";
 import { allPosts } from "@/.contentlayer/generated";
-import Link from "next/link";
+
 export default function Home() {
   return (
     <section className="text-white-700 body-font">
@@ -39,7 +39,23 @@ export default function Home() {
           />
         </div>
       </div>
-      <PostSection />
+      <div className="">
+       
+        {allPosts.map((post) => (
+          <Card
+            key={post._id}
+            posts={{
+              id: post._id,
+              title: post.title,
+              image: post.image,
+              description: post.description,
+              date: post.date,
+              author: post.author,
+              author_image: post.author_image,
+            }}
+          ></Card>
+        ))}
+      </div>
     </section>
   );
 }
