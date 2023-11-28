@@ -5,7 +5,8 @@ import siteMetadata from "@/data/siteMetadata";
 import navLinks from "@/data/navLinks";
 import { ModeToggle } from "@/components/mode-toggle";
 
-const Navbar = () => {
+
+export default function Footer() {
   return (
     <header>
       <nav className="flex items-center justify-between p-8">
@@ -52,4 +53,3 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
