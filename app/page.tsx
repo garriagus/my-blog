@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Card from "@/components/Card";
 import { allPosts } from "@/.contentlayer/generated";
+import Form from "@/components/Form";
 
 export default function Home() {
   return (
-    <section className="text-white-700 body-font">
+    <section className="text-white-700 body-font">  
       <div className="container mx-auto flex px-5 py-6 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
@@ -55,6 +56,9 @@ export default function Home() {
             }}
           ></Card>
         ))}
+        <div className="flex min-h-screen flex-col items-center justify-between p-24">
+  <Form></Form>
+</div>
       </div>
     </section>
   );

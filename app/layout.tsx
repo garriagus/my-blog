@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -75,7 +75,7 @@ export default function RootLayout({
         className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-max mx-auto py-10 px-4">
+          <div className="max-w-max mx-auto py-10 px-4 ">
             <Navbar />
             <main>{children}</main>
             <Footer />

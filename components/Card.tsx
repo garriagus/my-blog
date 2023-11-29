@@ -10,7 +10,7 @@ export default function Card(children: any) {
   return (
     <>
       <div
-        className=" border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+        className="relative font-[sans-serif] before:absolute before:w-full before:h-full before:inset-0 before:bg-black before:opacity-50 before:z-10"
         key={children.posts.id}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -19,35 +19,21 @@ export default function Card(children: any) {
         }}
       >
         <div
-          className={`transition-all duration-200 mb-8
-         ${isHovered ? "" : "backdrop-blur-3xl"}`}
+          className={`transition-all duration-400 min-h-[300px] relative z-50 h-full  mx-auto flex flex-col justify-center items-center text-center text-white p-6 mb-8
+         ${isHovered ? "" : "backdrop-blur-xl"}`}
         >
-          <div className="md:shrink-0">
-            <Image
-              className="flex items-center justify-center"
-              src={`/${children.posts.image}`}
-              width={360}
-              height={360}
-              alt={children.posts.title}
-              quality={100}
-            ></Image>
-          </div>
-          <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-              Company retreats
-            </div>
-            <a
-              href="#"
-              className="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
-            >
-              Incredible accommodation for your team
-            </a>
-            <p className="text-gray-700 text-base">
-              Looking to take your team away on a retreat to enjoy awesome food
-              and take in some sunshine? We have a list of places to do just
-              that.
-            </p>
-          </div>
+          <h1 className="sm:text-4xl text-2xl font-bold mb-6">
+            {children.posts.title}
+          </h1>
+          <p className="text-lg text-center text-white">
+            {children.posts.description}
+          </p>
+          <a
+            href=""
+            className="mt-8 bg-transparent text-white text-base font-semibold py-2.5 px-6 border-2 border-white rounded hover:bg-white hover:text-black transition duration-300 ease-in-out"
+          >
+            {children.posts.slug}
+          </a>
         </div>
       </div>
     </>
