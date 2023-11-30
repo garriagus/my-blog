@@ -72,10 +72,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50 ${inter.className}`}
+        className={`bg-white text-black antialiased dark:bg-gray-950 dark:text-white ${inter.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-max mx-auto py-10 px-4 ">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0 ">
             <Navbar />
             <main>{children}</main>
             <Footer />

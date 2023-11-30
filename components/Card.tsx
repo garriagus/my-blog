@@ -5,7 +5,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 export default function Card(children: any) {
-  const [isHovered, setIsHovered] = useState(false);
+const [isHovered, setIsHovered] = useState(false);
+console.log("aaaaaaa"+children.posts.image)
+
 
   return (
     <>
@@ -22,9 +24,10 @@ export default function Card(children: any) {
           className={`transition-all duration-400 min-h-[300px] relative z-50 h-full  mx-auto flex flex-col justify-center items-center text-center text-white p-6 mb-8
          ${isHovered ? "" : "backdrop-blur-xl"}`}
         >
-          <h1 className="sm:text-4xl text-2xl font-bold mb-6">
-            {children.posts.title}
-          </h1>
+          
+          <Link href= {children.posts.slug}>
+                <h2 className="tdark:prose-invert sm:text-4xl text-2xl font-bold mb-6">  {children.posts.title}</h2>
+              </Link>
           <p className="text-lg text-center text-white">
             {children.posts.description}
           </p>
