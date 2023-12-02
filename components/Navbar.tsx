@@ -15,10 +15,10 @@ const Navbar = () => {
               <div className="mr-3">
               <Image
                       src="/logo.png"
-                      alt="Vercel Logo"
+                      alt="Agustín Garrido logo"
                       className="dark:invert"
-                      width={40}
-                      height={40}
+                      width={60}
+                      height={60}
                       priority
                   />
               </div>

@@ -15,4 +15,29 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #000; /* Puedes ajustar el color del cursor al parpadear */
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  border-right: 2px solid transparent; /* Ajusta según tus necesidades */
+  animation: typing 2s steps(20, end), blink-caret 0.75s infinite alternate;
+}
