@@ -1,39 +1,191 @@
-import projectsData from '@/data/projectsData'
-import Card from '@/components/Card'
+import Image from "next/image";
+import bars from "@/public/next.svg";
 
-
-export default function Projects() {
+export default function Page() {
   return (
-    <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Projects
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Showcase your projects with a hero image (16 x 9)
-          </p>
-        </div>
-        <div className="container py-12">
-          <div className="-m-4 flex flex-wrap">
-            {projectsData.map((post) => (
-              <Card
-              key={post.id}
-              posts={{
-                id: post.id,
-                title: post.title,
-                image: post.imgSrc,
-                description: post.description,
-                date: post.date,
-                author: post.author,
-                author_image: post.author_image,
-                tag: post.tags,
-                slug: post.slug
-              }}></Card>
-            ))}
+    <section>
+      <h2 className="text-2xl mt-6 pb-1 border-b font-semibold">Projects</h2>
+      <ul className="mt-1">
+        <li className="py-2">
+          <div className="flex justify-between my-1">
+            <strong>Rules of 10000 hours</strong>
+            <p className="flex">
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                HTML
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                CSS
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                JS
+              </span>
+            </p>
           </div>
-        </div>
-      </div>
-    </>
-  )
+          <ul className="flex mb-2">
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Live
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Code
+              </a>
+            </li>
+          </ul>
+          <p className="text-xs">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+            delectus labore enim in minus quod vero dignissimos et, ratione
+            obcaecati quis maiores? Voluptatem, natus cupiditate perferendis
+            omnis ex hic incidunt! Earum dolore cupiditate sed et maxime
+            distinctio iure fugiat aspernatur at veniam laudantium eveniet
+            corporis dicta reiciendis quod consequatur, labore perferendis
+            dolorum velit quibusdam minus iste dolorem! Officiis, obcaecati
+            maxime
+          </p>
+        </li>
+        <li className="py-2">
+          <div className="flex justify-between my-1">
+            <strong>Vending Machine</strong>
+            <p className="flex">
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                HTML
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                CSS
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                JS
+              </span>
+            </p>
+          </div>
+          <ul className="flex mb-2">
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Live
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Code
+              </a>
+            </li>
+          </ul>
+          <p className="text-xs">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            expedita illum optio porro suscipit rerum labore veritatis autem eum
+            totam veniam repudiandae repellendus perspiciatis eligendi sequi
+            maiores, cum ipsa ut! Dolorum aliquid quaerat, dolore nemo, vero
+            alias non porro quam totam impedit repellat voluptas, nobis harum
+            quae dolorem accusantium consequatur. Recusandae cupiditate possimus
+            natus consequuntur aliquid, molestias provident saepe nobis.
+          </p>
+        </li>
+        <li className="py-2">
+          <div className="flex justify-between my-1">
+            <strong>Landing Page</strong>
+            <p className="flex">
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                HTML
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                CSS
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                React
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                Node.js
+              </span>
+            </p>
+          </div>
+          <ul className="flex mb-2">
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Live
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Code
+              </a>
+            </li>
+          </ul>
+          <p className="text-xs">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus,
+            odio autem non possimus adipisci, sed sequi culpa ipsa
+            necessitatibus repellat rerum. Obcaecati nobis modi voluptate nam
+            minus praesentium soluta voluptatibus! Minima temporibus deserunt
+            laborum, expedita ad molestiae perferendis? Ipsa aut, necessitatibus
+            expedita rem iure minus sit voluptates magni, sequi eum architecto
+            excepturi tempora dolorum soluta quam odit amet nobis incidunt.
+          </p>
+        </li>
+        <li className="py-2">
+          <div className="flex justify-between my-1">
+            <strong>Gamgyul Market</strong>
+            <p className="flex">
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                HTML
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                CSS
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                React
+              </span>
+              <span className="bg-gray-600 text-white px-2 py-1 ml-1 text-xs rounded">
+                Node.js
+              </span>
+            </p>
+          </div>
+          <ul className="flex mb-2">
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Live
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="bg-blue-600 text-white px-2 py-1 mr-1 text-sm rounded"
+              >
+                Code
+              </a>
+            </li>
+          </ul>
+          <p className="text-xs">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus
+            suscipit soluta at doloremque ipsa unde, doloribus beatae delectus
+            odio dolorum consequatur libero esse ratione nostrum nihil quaerat
+            alias cupiditate assumenda? Nesciunt unde aliquid quam quisquam
+            excepturi deserunt ipsa doloremque culpa itaque. Esse consectetur
+            odit est laboriosam facilis! Accusamus inventore vel magni sed
+            aliquid! Aspernatur dolores, nam id fugit ad aliquam.
+          </p>
+        </li>
+      </ul>
+    </section>
+  );
 }

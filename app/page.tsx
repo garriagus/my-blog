@@ -17,7 +17,6 @@ export default function Home() {
               FULL STACK DEVELOPER
             </span>
           </h1>
-
           <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
             Soy un desarrollador de aplicaciones web y además incursiono en el
             mundo del Internet de las cosas (IoT). En este espacio encontrarás
