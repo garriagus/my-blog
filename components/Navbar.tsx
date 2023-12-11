@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "@/components/MobileNav";
+import SigninButton from "@/components/SigninButton";
 import siteMetadata from "@/data/siteMetadata";
 import navLinks from "@/data/navLinks";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -13,14 +14,14 @@ const Navbar = () => {
           <Link href="/" aria-label={siteMetadata.headerTitle}>
             <div className="flex items-center justify-between">
               <div className="mr-3">
-              <Image
-                      src="/logo.png"
-                      alt="Agustín Garrido logo"
-                      className="dark:invert"
-                      width={60}
-                      height={60}
-                      priority
-                  />
+                <Image
+                  src="/logo.png"
+                  alt="Agustín Garrido logo"
+                  className="dark:invert"
+                  width={60}
+                  height={60}
+                  priority
+                />
               </div>
               {typeof siteMetadata.headerTitle === "string" ? (
                 <div className="hidden h-6 text-2xl font-semibold sm:block">
@@ -33,6 +34,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
+          <SigninButton></SigninButton>
           {navLinks
             .filter((link) => link.href !== "/")
             .map((link) => (

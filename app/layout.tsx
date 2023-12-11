@@ -9,6 +9,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Space_Grotesk } from "next/font/google";
 import siteMetadata from "@/data/siteMetadata";
 
+import { NextAuthProvider } from "@/components/Providers";
 const space_grotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
@@ -70,6 +71,7 @@ export default function RootLayout({
       <body
         className={`bg-white text-black antialiased dark:bg-gray-950 dark:text-white ${inter.className}`}
       >
+        <NextAuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="mx-auto max-w-4xl px-4 sm:px-6 xl:max-w-5xl xl:px-0 ">
             <Navbar />
@@ -77,6 +79,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
